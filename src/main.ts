@@ -193,7 +193,7 @@ function drawBlendShapes(el: HTMLElement, blendShapes: any[]) {
   el.innerHTML = htmlMaker;
 }
 
-function computeAndDisplayQuadrantStats(faceBlendShapes) {
+function aaa(faceBlendShapes) {
   const eyeLookDownLeft = faceBlendshapes[0].categories[9].score;
   const eyeLookDownRight = faceBlendshapes[0].categories[10].score;
   console.log({ eyeLookDownLeft, eyeLookDownRight })
@@ -219,13 +219,10 @@ function computeAndDisplayQuadrantStats(faceBlendShapes) {
 }
 
 function computeAndDisplayLookingAtScreenStats(faceBlendshapes) {
-  const blinkRight = faceBlendshapes[0].categories[9].score;
-  const blinkLeft = faceBlendshapes[0].categories[10].score;
-  console.log({ blinkRight, blinkLeft })
-
-  let rateFactor = blinkRight + blinkLeft - 0.2;
-  window.fakeSeconds += Math.max(0, rateFactor / 5)
-  console.log("tick", rateFactor, window.fakeSeconds)
+  const eyeLookDownLeft = faceBlendshapes[0].categories[9].score;
+  const eyeLookDownRight = faceBlendshapes[0].categories[10].score;
+  console.log(eyeLookDownLeft)
+  let lookDown = eyeLookDownLeft + eyeLookDownRight - 0.2;
 }
 
 setInterval(() => {
