@@ -7,14 +7,18 @@ window.onload = function () {
 	const clock = document.querySelector('.clock');
 	const audio = document.querySelector('.audio');
 
+	const today = new Date();
+	window.fakeSeconds = today.second;
 
-	window.fakeSeconds = 0;
 	//	setInterval(() => window.fakeSeconds++, 1000);
 
 	function setDate() {
 
 		//const second = today.getSeconds();
 		const second = Math.floor(window.fakeSeconds);
+		if (window.fakeSeconds >= 60){
+			window.fakeSeconds = 0;
+		}
 		const secondDeg = (((second % 60) / 60) * 360) + 360;
 		secondHand.style.transform = `rotate(${secondDeg}deg)`;
 

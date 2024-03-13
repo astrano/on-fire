@@ -74,10 +74,10 @@ function enableCam(event) {
 
   if (webcamRunning === true) {
     webcamRunning = false;
-    enableWebcamButton.innerText = "ENABLE PREDICTIONS";
+    enableWebcamButton.innerText = "BURN";
   } else {
     webcamRunning = true;
-    enableWebcamButton.innerText = "DISABLE PREDICTIONS";
+    enableWebcamButton.innerText = "Stop watching me";
   }
 
   // getUsermedia parameters.
@@ -191,6 +191,31 @@ function drawBlendShapes(el: HTMLElement, blendShapes: any[]) {
   });
 
   el.innerHTML = htmlMaker;
+}
+
+function computeAndDisplayQuadrantStats(faceBlendShapes) {
+  const eyeLookDownLeft = faceBlendshapes[0].categories[9].score;
+  const eyeLookDownRight = faceBlendshapes[0].categories[10].score;
+  console.log({ eyeLookDownLeft, eyeLookDownRight })
+  let lookDown = eyeLookDownLeft + eyeLookDownRight - 0.2;
+
+  const eyeLookInLeft = faceBlendshapes[0].categories[9].score;
+  const eyeLookOutRight = faceBlendshapes[0].categories[10].score;
+  console.log({ eyeLookinLeft, eyeLookOutRight })
+  let lookRight = eyeLookinLeft + eyeLookOutRight - 0.2;
+
+  const eyeLookUpLeft = faceBlendshapes[0].categories[9].score;
+  const eyeLookUpRight = faceBlendshapes[0].categories[10].score;
+  console.log({ eyeLookUpLeft, eyeLookUpRight })
+  let lookUp = eyeLookUpLeft + eyeLookUpRight - 0.2;
+
+  const eyeLookOutLeft = faceBlendshapes[0].categories[9].score;
+  const eyeLookInRight = faceBlendshapes[0].categories[10].score;
+  console.log({ eyeLookOutLeft, eyeLookInRight })
+  let lookLeft = eyeLookOutLeft + eyeLookInRight - 0.2;
+
+  console.log({lookDown, lookRight, lookLeft, lookUp});
+
 }
 
 function computeAndDisplayLookingAtScreenStats(faceBlendshapes) {
