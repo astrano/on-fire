@@ -193,38 +193,28 @@ function drawBlendShapes(el: HTMLElement, blendShapes: any[]) {
   el.innerHTML = htmlMaker;
 }
 
-function aaa(faceBlendShapes) {
-  const eyeLookDownLeft = faceBlendshapes[0].categories[9].score;
-  const eyeLookDownRight = faceBlendshapes[0].categories[10].score;
-  console.log({ eyeLookDownLeft, eyeLookDownRight })
+
+function computeAndDisplayLookingAtScreenStats(faceBlendshapes) {
+  const eyeLookDownLeft = faceBlendshapes[0].categories[11].score;
+  const eyeLookDownRight = faceBlendshapes[0].categories[12].score;
+  // console.log(eyeLookDownLeft)
   let lookDown = eyeLookDownLeft + eyeLookDownRight - 0.2;
 
-  const eyeLookInLeft = faceBlendshapes[0].categories[9].score;
-  const eyeLookOutRight = faceBlendshapes[0].categories[10].score;
-  console.log({ eyeLookinLeft, eyeLookOutRight })
-  let lookRight = eyeLookinLeft + eyeLookOutRight - 0.2;
+  const eyeLookInLeft = faceBlendshapes[0].categories[13].score;
+  const eyeLookOutRight = faceBlendshapes[0].categories[16].score;
+  // console.log({ eyeLookInLeft, eyeLookOutRight })
+  let lookRight = eyeLookInLeft + eyeLookOutRight - 0.2;
 
-  const eyeLookUpLeft = faceBlendshapes[0].categories[9].score;
-  const eyeLookUpRight = faceBlendshapes[0].categories[10].score;
-  console.log({ eyeLookUpLeft, eyeLookUpRight })
+  const eyeLookUpLeft = faceBlendshapes[0].categories[17].score;
+  const eyeLookUpRight = faceBlendshapes[0].categories[18].score;
+   // console.log({ eyeLookUpLeft, eyeLookUpRight })
   let lookUp = eyeLookUpLeft + eyeLookUpRight - 0.2;
 
-  const eyeLookOutLeft = faceBlendshapes[0].categories[9].score;
-  const eyeLookInRight = faceBlendshapes[0].categories[10].score;
-  console.log({ eyeLookOutLeft, eyeLookInRight })
+  const eyeLookOutLeft = faceBlendshapes[0].categories[15].score;
+  const eyeLookInRight = faceBlendshapes[0].categories[14].score;
+   // console.log({ eyeLookOutLeft, eyeLookInRight })
   let lookLeft = eyeLookOutLeft + eyeLookInRight - 0.2;
 
   console.log({lookDown, lookRight, lookLeft, lookUp});
 
 }
-
-function computeAndDisplayLookingAtScreenStats(faceBlendshapes) {
-  const eyeLookDownLeft = faceBlendshapes[0].categories[9].score;
-  const eyeLookDownRight = faceBlendshapes[0].categories[10].score;
-  console.log(eyeLookDownLeft)
-  let lookDown = eyeLookDownLeft + eyeLookDownRight - 0.2;
-}
-
-setInterval(() => {
-  window.fakeSeconds++;
-}, 1000)
