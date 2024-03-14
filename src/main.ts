@@ -77,7 +77,7 @@ function enableCam(event) {
     enableWebcamButton.innerText = "BURN";
   } else {
     webcamRunning = true;
-    enableWebcamButton.innerText = "Stop watching me";
+    enableWebcamButton.innerText = "Put it out!";
   }
 
   // getUsermedia parameters.
@@ -215,6 +215,29 @@ function computeAndDisplayLookingAtScreenStats(faceBlendshapes) {
    // console.log({ eyeLookOutLeft, eyeLookInRight })
   let lookLeft = eyeLookOutLeft + eyeLookInRight - 0.2;
 
-  console.log({lookDown, lookRight, lookLeft, lookUp});
+  // console.log({lookDown, lookRight, lookLeft, lookUp});
+
+  // console.log( (lookUp > lookDown), (lookLeft > lookRight), window.lookQuadrant );
+
+  let lookQuadrant = 0;
+
+  if(lookUp > lookDown) {
+    if (lookLeft > lookRight) {
+      lookQuadrant = 1;
+    } else {
+      lookQuadrant = 2;
+    }
+  } else {
+    if (lookLeft > lookRight) {
+      lookQuadrant = 3;
+    }
+    else {
+      lookQuadrant = 4;
+    }
+  }
+
+  console.log(lookQuadrant);
+
+  window.lookQuadrant = lookQuadrant;
 
 }
